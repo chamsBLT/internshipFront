@@ -16,8 +16,8 @@ export class SubjectService {
   addSubject(Subject: any) {
     return this.httpClient.post(`${this.API_URL}/addSubject`, Subject);
   }
-  editSubject(Subject: any) {
-    return this.httpClient.put(`${this.API_URL}/updateSubject`, Subject);
+  editSubject(id: any, Subject: any) {
+    return this.httpClient.put(`${this.API_URL}/updateSubject/${id}`, Subject);
   }
   deleteSubject(id: any) {
     return this.httpClient.delete(`${this.API_URL}/deleteSubject/${id}`);

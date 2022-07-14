@@ -51,8 +51,8 @@ export class InternComponent implements OnInit {
     });
   }
 
-  editIntern(Intern: Intern) {
-    this.is.editIntern(Intern).subscribe();
+  editIntern(id: any ,Intern: Intern) {
+    this.is.editIntern(id, Intern).subscribe();
   }
 
   confirmDelete(id: any , name: any) {

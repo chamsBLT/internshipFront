@@ -16,8 +16,8 @@ export class InternService {
   addIntern(Intern: any) {
     return this.httpClient.post(`${this.API_URL}/addIntern`, Intern);
   }
-  editIntern(Intern: any) {
-    return this.httpClient.put(`${this.API_URL}/updateIntern`, Intern);
+  editIntern(id: any, Intern: any) {
+    return this.httpClient.put(`${this.API_URL}/updateIntern/${id}`, Intern);
   }
   deleteIntern(id: any) {
     return this.httpClient.delete(`${this.API_URL}/deleteIntern/${id}`);
