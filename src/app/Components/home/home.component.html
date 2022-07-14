@@ -1,0 +1,22 @@
+<style>
+    #grad {
+      height: 100vh;
+      background-color: #c8f4ff;
+      background-image: linear-gradient(to right, #c8f4ff , rgb(255, 255, 255));
+    }
+    #container{
+        position: relative;
+        top: 50%;
+        width: 50%;
+        float:none;
+        margin:auto;
+    }
+    </style>
+    
+    <div id="grad" >
+        <div id="container">
+            <button id="bInterns" type="button" class="btn btn-primary btn-lg btn-block" outerLinkActive="active" [routerLink]="['/interns']">Interns</button>
+            <button id="bSubjects" type="button" class="btn btn-secondary btn-lg btn-block" outerLinkActive="active" [routerLink]="['/subjects']">Subjects</button>
+        </div>
+    </div>
+    
