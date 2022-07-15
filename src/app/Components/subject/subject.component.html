@@ -1,8 +1,8 @@
 <style>
-    #grad {
+  #grad {
     height: 100vh;
     background-color: #c8f4ff;
-    background-image: linear-gradient(to right, #234E70 , #FBF8BE);
+    background-image: linear-gradient(to top, rgb(85, 149, 27) 0.1%, rgb(183, 219, 87) 90%);
   }
 </style>
 <!-- Page content -->
@@ -12,146 +12,169 @@
   <div class="row">
     <!-- Add  -->
     <div class="col-md-12">
-      <button class="btn btn-round btn-sm btn-success" style="float: right; font-size: 15px; padding: 6px 25px;" (click)="open(mymodal1)">Add a Subject</button>
-      <br><br>
-      <ng-template #mymodal1 let-modal1>
-        <div class="modal-header">
-          <h4 class="modal-title" id="modal-basic-title"><b>Add a Subject</b></h4>
-          <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-            <span aria-hidden="true" (click)="cancel()">×</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <form>
-            <div class="row col-md-12" style="float:none;margin:auto;">
-              <h4 style="float:none;margin:auto;">(*) N° :</h4>
-              <input type="number" placeholder="" [(ngModel)]="subject.number"
-                     [ngModelOptions]="{standalone : true}" style="width: 100%">
+      <button class="btn btn-round btn-sm btn-success" style="float: right; font-size: 15px; padding: 6px 25px;"
+        (click)="open(mymodal1)">Add a Subject</button>
+      <button class="btn btn-outline-light" style="float: left; font-size: 15px; padding: 6px 25px;"
+        outerLinkActive="active" [routerLink]="['/home']">
+        << Back</button>
+          <br><br>
+          <ng-template #mymodal1 let-modal1>
+            <div class="modal-header">
+              <label class="modal-title" id="modal-basic-title"><b>Add a Subject</b></label>
+              <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+                <span aria-hidden="true" (click)="cancel()">×</span>
+              </button>
             </div>
-            <br>
-            <div class="row col-md-12" style="float:none;margin:auto;">
-              <h4 style="float:none;margin:auto;">(*) Title :</h4>
-              <input type="text" placeholder="" [(ngModel)]="subject.title"
-                     [ngModelOptions]="{standalone : true}" style="width: 100%">
+            <div class="modal-body">
+              <form>
+                <div class="form-row">
+                  <div class="col-md-2 mb-3">
+                    <label>N° :</label>
+                    <input class="form-control" type="number" placeholder="" [(ngModel)]="subject.number"
+                      [ngModelOptions]="{standalone : true}">
+                  </div>
+                  <br>
+                  <div class="col-md-10 mb-3">
+                    <label>Title :</label>
+                    <input class="form-control" type="text" placeholder="" [(ngModel)]="subject.title"
+                      [ngModelOptions]="{standalone : true}">
+                  </div>
+                  <br>
+                  <div class="col-md-12 mb-3">
+                    <label>Field :</label>
+                    <select class="form-control" [(ngModel)]="subject.field" [ngModelOptions]="{standalone : true}">
+                      <option class="form-control" value="null" style="text-align-last: center;" selected disabled>--
+                        Field --</option>
+                      <option class="form-control" value="DEVOPS">DEVOPS</option>
+                      <option class="form-control" value="FULLSTACK">FULLSTACK</option>
+                    </select>
+                  </div>
+                  <br>
+                  <div class="col-md-8 mb-3">
+                    <label>Staring date :</label>
+                    <input class="form-control" type="date" placeholder="" [(ngModel)]="subject.startingDate"
+                      [ngModelOptions]="{standalone : true}">
+                  </div>
+                  <br>
+                  <div class="col-md-4 mb-3">
+                    <label>Period (W):</label>
+                    <input class="form-control" type="number" placeholder="" [(ngModel)]="subject.period"
+                      [ngModelOptions]="{standalone : true}">
+                  </div>
+                  <br>
+                  <div class="col-md-12 mb-3">
+                    <label>Description :</label>
+                    <input class="form-control" type="text" placeholder="" [(ngModel)]="subject.description"
+                      [ngModelOptions]="{standalone : true}">
+                  </div>
+                  <br>
+                  <br>
+                  <div style="margin: auto; width: max-content;">
+                    <button [disabled]="!subject.number || !subject.title || !subject.field" class="btn btn-success"
+                      type="button" class="btn btn-success" (click)="addSubject(subject)"
+                      (click)="modal1.close('Save click')" style="width:100px; margin-right: 10px;">Add</button>
+                    <button type="button" class="btn btn-info" (click)="modal1.close('Save click')"
+                      style="width:100px">Cancel</button>
+                  </div>
+                </div>
+              </form>
             </div>
-            <br>
-            <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;margin-left: 0px;display: inline-block">(*) Field :</h4>
-                <select [(ngModel)]="subject.field" [ngModelOptions]="{standalone : true}" style="width:75%;display: inline-block">
-                  <option value="null" style="text-align-last: center;" selected disabled>-- Field --</option>
-                  <option value="DEVOPS">DEVOPS</option>
-                  <option value="FULLSTACK">FULLSTACK</option>
-                </select>
-              </div>
-            <br>
-            <div class="row col-md-12" style="float:none;margin:auto;">
-              <h4 style="float:none;margin:auto;">Staring date :</h4>
-              <input type="date" placeholder="" [(ngModel)]="subject.startingDate"
-                     [ngModelOptions]="{standalone : true}" style="width: 100%">
-            </div>
-            <br>
-            <div class="row col-md-12" style="float:none;margin:auto;">
-              <h4 style="float:none;margin:auto;">Period :</h4>
-              <input type="number" placeholder="" [(ngModel)]="subject.period"
-                     [ngModelOptions]="{standalone : true}" style="width: 100%">
-            </div>
-            <br>
-            <div class="row col-md-12" style="float:none;margin:auto;">
-              <h4 style="float:none;margin:auto;">Description :</h4>
-              <input type="text" placeholder="" [(ngModel)]="subject.description"
-                     [ngModelOptions]="{standalone : true}" style="width: 100%">
-            </div>
-            <br>
-            <br>
-            <div style="margin: auto; width: max-content;">
-              <button [disabled]="!subject.number || !subject.title || !subject.field"class="btn btn-success" type="button" class="btn btn-success" (click)="addSubject(subject)" (click)="modal1.close('Save click')" style="width:100px">Add</button>
-              <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" style="width:100px">Cancel</button>
-            </div>
-          </form>
-        </div>
-      </ng-template>
+          </ng-template>
     </div>
     <!-- Table -->
     <div class="col">
       <div class="card shadow">
         <div class="card-header border-0">
-          <h3 class="mb-0"><b>Subjects management</b></h3>
+          <label class="mb-0"><b>Subjects management</b></label>
         </div>
         <div class="row col-md-12">
           <div class="col-md-3" *ngFor="let subject of subjectsList">
-            <div class="card shadow  bg-white rounded" style="width: 18rem; margin-left: 30px; margin-top: 10px;margin-bottom: 10px; display: inline-block;">
-              <img class="card-img-top" src="../../../assets/subjects.png" alt="Card image cap" style="height:10px">
+            <div class="card shadow p-3 mb-3 bg-white rounded"
+              style="width: 18rem; margin-left: 30px; margin-top: 10px;margin-bottom: 10px; display: inline-block;">
+              <img class="card-img-top" src="../../../assets/subjects.png" alt="Card image cap" style="height:5px">
               <div class="card-body">
-                <h6 style="float: right"> {{ subject.field }}</h6>
+                <label style="float: right"> {{ subject.field }}</label>
                 <br>
                 <br>
-                <h3 class="card-title" style="text-align: center">N° {{ subject.number }} - {{ subject.title }}</h3>
-                <p class="card-text" style="text-align: center"> {{ subject.description }}</p>
+                <label class="card-title" style="text-align: center; width: 100%;"><b>N° {{ subject.number }} - {{
+                    subject.title }}</b></label>
+                <label class="card-text" style="text-align: center; width: 100%;"> {{ subject.description }}</label>
                 <br>
-                <button type="button" class="btn btn-outline-primary"
-                        (click)="open(mymodal)" style="width: 47%; font-size: 10px;margin-top:2px; display: inline-block">
+                <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)"
+                  style="width: 47%; font-size: 10px;margin-top:2px; display: inline-block">
                   Edit
                 </button>
                 <ng-template #mymodal let-modal>
                   <div class="modal-header">
-                    <h4 class="modal-title" id="modal-basic-title"><b>Edit intern</b></h4>
-                    <button type="button" class="close" aria-label="Close"
-                            (click)="modal.dismiss('Cross click')">
+                    <label class="modal-title" id="modal-basic-title"><b>Edit subject</b></label>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
                       <span aria-hidden="true" (click)="cancel()">×</span>
                     </button>
                   </div>
                   <div>
                     <form>
                       <div class="modal-body">
-                        <div class="row col-md-12">
-                          <h4 style="float:none;margin:auto;">(*) N ° :</h4>
-                          <input type="number" [(ngModel)]="subject.number" [ngModelOptions]="{standalone : true}" style="width: 100%" />
+                        <div class="form-row">
+                          <div class="col-md-2 mb-3">
+                            <label>N° :</label>
+                            <input class="form-control" type="number" [(ngModel)]="subject.number"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-10 mb-3">
+                            <label>Title :</label>
+                            <input class="form-control" type="text" [(ngModel)]="subject.title"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-12 mb-3">
+                            <label>Field :</label>
+                            <select class="form-control" [(ngModel)]="subject.field"
+                              [ngModelOptions]="{standalone : true}">
+                              <option class="form-control" value="null" style="text-align-last: center;" selected
+                                disabled>-- Field --
+                              </option>
+                              <option class="form-control" value="DEVOPS">DEVOPS</option>
+                              <option class="form-control" value="FULLSTACK">FULLSTACK</option>
+                            </select>
+                          </div>
+                          <br>
+                          <div class="col-md-8 mb-3">
+                            <label>Startin date :</label>
+                            <input class="form-control" type="date" [(ngModel)]="subject.startingDate"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-4 mb-3">
+                            <label>Period (W):</label>
+                            <input class="form-control" type="number" [(ngModel)]="subject.period"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-12 mb-3">
+                            <label>Description :</label>
+                            <textarea class="form-control" type="text" [(ngModel)]="subject.description"
+                              [ngModelOptions]="{standalone : true}" rows="4"></textarea>
+                          </div>
+                          <br>
                         </div>
-                        <br>
-                        <div class="row col-md-12">
-                          <h4 style="float:none;margin:auto;">(*) Title :</h4>
-                          <input type="text" [(ngModel)]="subject.title" [ngModelOptions]="{standalone : true}" style="width: 100%" />
+                        <div class="modal-footer" style="margin: auto; width: max-content;">
+                          <button [disabled]="!subject.number || !subject.title || !subject.field "
+                            class="btn btn-success" (click)="editSubject(subject.idSubject,subject)"
+                            (click)="modal.close('Save click')" style="width:100px">Confirm</button>
+                          <button type="button" class="btn btn-info" (click)="modal.close('Save click')"
+                            (click)="cancel()" style="width:100px">
+                            Cancel
+                          </button>
                         </div>
-                        <br>
-                        <div class="row col-md-12">
-                          <h4 style="float:none;margin:auto;">(*) Field :</h4>
-                          <select [(ngModel)]="subject.field" [ngModelOptions]="{standalone : true}" style="width:75%;display: inline-block">
-                            <option value="null" style="text-align-last: center;" selected disabled>-- Field --</option>
-                            <option value="DEVOPS">DEVOPS</option>
-                            <option value="FULLSTACK">FULLSTACK</option>
-                          </select>
-                        </div>
-                        <br>
-                        <div class="row col-md-12">
-                          <h4 style="float:none;margin:auto;">Startin date :</h4>
-                          <input type="date" [(ngModel)]="subject.startingDate" [ngModelOptions]="{standalone : true}" style="width: 100%"/>
-                        </div>
-                        <br>
-                        <div class="row col-md-12">
-                          <h4 style="float:none;margin:auto;">Period :</h4>
-                          <input type="number" [(ngModel)]="subject.period" [ngModelOptions]="{standalone : true}" style="width: 100%"/>
-                        </div>
-                        <br>
-                        <div class="row col-md-12">
-                          <h4 style="float:none;margin:auto;">Description :</h4>
-                          <textarea type="text" [(ngModel)]="subject.description" [ngModelOptions]="{standalone : true}" style="width: 100%; resize: none;" rows="4"></textarea>
-                        </div>
-                        <br>
-                      </div>
-
-                      <div class="modal-footer" style="margin: auto; width: max-content;">
-                        <button [disabled]="!subject.number || !subject.title || !subject.field " class="btn btn-success" (click)="editSubject(subject.idSubject,subject)" (click)="modal.close('Save click')" style="width:100px">Confirm</button>
-                        <button type="button" class="btn btn-info"
-                                (click)="modal.close('Save click')" (click)="cancel()" style="width:100px">
-                          Cancel
-                        </button>
                       </div>
                     </form>
                   </div>
                   <br>
                 </ng-template>
                 <button type="button" class="btn btn-outline-danger"
-                        (click)="confirmDelete(subject.idSubject,subject.title)" style="width: 47%; font-size:10px; margin-top:2px;display: inline-block; float: right;">
+                  (click)="confirmDelete(subject.idSubject,subject.title)"
+                  style="width: 47%; font-size:10px; margin-top:2px;display: inline-block; float: right;">
                   Delete
                 </button>
               </div>
@@ -164,8 +187,8 @@
     </div>
   </div>
 </div>
-  <style>
-    ::ng-deep ngb-modal-backdrop {
-      z-index: 100 !important;
-    }
-  </style>
+<style>
+  ::ng-deep ngb-modal-backdrop {
+    z-index: 100 !important;
+  }
+</style>
