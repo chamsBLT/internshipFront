@@ -2,21 +2,23 @@
     #grad {
       height: 100vh;
       background-color: #c8f4ff;
-      background-image: linear-gradient(to right, #234E70 , #FBF8BE);
+      background-image: linear-gradient(to top, rgb(85, 149, 27) 0.1%, rgb(183, 219, 87) 90%);
     }
     #container{
         position: relative;
-        top: 50%;
+        top: 30%;
         width: 50%;
         float:none;
         margin:auto;
+        padding: 40px;
     }
     </style>
     
     <div id="grad" >
-        <div id="container">
-            <button id="bInterns" type="button" class="btn btn-primary btn-lg btn-block" outerLinkActive="active" [routerLink]="['/interns']">Interns</button>
-            <button id="bSubjects" type="button" class="btn btn-secondary btn-lg btn-block" outerLinkActive="active" [routerLink]="['/subjects']">Subjects</button>
+        <div class="card shadow" style="width: 18rem;" id="container">
+            <img src="../../../assets/intern.png" style="height: 50%; width: 50%;float:none;margin:auto;margin-bottom: 15%;"/>
+            <button id="bInterns" type="button" class="btn btn-outline-success" style="margin: 4px;"  outerLinkActive="active" [routerLink]="['/interns']">Interns</button>
+            <button id="bSubjects" type="button" class="btn btn-outline-success" style="margin: 4px;" outerLinkActive="active" [routerLink]="['/subjects']">Subjects</button>
         </div>
     </div>
     

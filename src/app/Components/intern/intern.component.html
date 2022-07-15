@@ -1,203 +1,229 @@
 <style>
-      #grad {
-      height: 100vh;
-      background-color: #c8f4ff;
-      background-image: linear-gradient(to right, #234E70 , #FBF8BE);
-    }
+  #grad {
+    height: 100vh;
+    background-color: #c8f4ff;
+    background-image: linear-gradient(to top, rgb(85, 149, 27) 0.1%, rgb(183, 219, 87) 90%);
+  }
 </style>
- <!-- Page content -->
-  <div id="grad" class="container-fluid mt--7">
-    <br>
-    <br>
-    <div class="row">
-      <!-- Add  -->
-      <div class="col-md-12">
-        <button class="btn btn-round btn-sm btn-success" style="float: right; font-size: 15px; padding: 6px 25px;" (click)="open(mymodal1)">Add intern</button>
-        <br><br>
-        <ng-template #mymodal1 let-modal1>
-          <div class="modal-header">
-            <h4 class="modal-title" id="modal-basic-title"><b>Add Intern</b></h4>
-            <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
-              <span aria-hidden="true" (click)="cancel()">×</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form>
-              <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;">(*) CIN :</h4>
-                <input type="number" placeholder="" [(ngModel)]="intern.CIN"
-                       [ngModelOptions]="{standalone : true}" style="width: 100%">
+<!-- Page content -->
+<div id="grad" class="container-fluid mt--7">
+  <br>
+  <br>
+  <div class="row">
+    <!-- Add  -->
+    <div class="col-md-12">
+      <button class="btn btn-round btn-sm btn-success" style="float: right; font-size: 15px; padding: 6px 25px;"
+        (click)="open(mymodal1)">Add an Intern</button>
+        <button class="btn btn-outline-light" style="float: left; font-size: 15px; padding: 6px 25px;"
+        outerLinkActive="active" [routerLink]="['/home']"> << Back</button>
+      <br><br>
+      <ng-template #mymodal1 let-modal1>
+        <div class="modal-header">
+          <label class="modal-title" id="modal-basic-title"><b>Add an Intern</b></label>
+          <button type="button" class="close" aria-label="Close" (click)="modal1.dismiss('Cross click')">
+            <span aria-hidden="true" (click)="cancel()">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-row">
+              <div class="col-md-4 mb-3">
+                <label>CIN :</label>
+                <input type="number" class="form-control" placeholder="" [(ngModel)]="intern.CIN"
+                  [ngModelOptions]="{standalone : true}" style="width: 100%">
               </div>
               <br>
-              <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;">(*) First name :</h4>
-                <input type="text" placeholder="" [(ngModel)]="intern.firstName"
-                       [ngModelOptions]="{standalone : true}" style="width: 100%">
+              <div class="col-md-4 mb-3">
+                <label>First name :</label>
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="intern.firstName"
+                  [ngModelOptions]="{standalone : true}" style="width: 100%">
               </div>
               <br>
-              <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;">(*) Last name :</h4>
-                <input type="text" placeholder="" [(ngModel)]="intern.lastName"
-                       [ngModelOptions]="{standalone : true}" style="width: 100%">
+              <div class="col-md-4 mb-3">
+                <label>Last name :</label>
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="intern.lastName"
+                  [ngModelOptions]="{standalone : true}" style="width: 100%">
               </div>
               <br>
-              <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;">School :</h4>
-                <input type="text" placeholder="" [(ngModel)]="intern.school"
-                       [ngModelOptions]="{standalone : true}" style="width: 100%">
+              <div class="col-md-12 mb-3">
+                <label>School :</label>
+                <input type="text" class="form-control" placeholder="" [(ngModel)]="intern.school"
+                  [ngModelOptions]="{standalone : true}" style="width: 100%">
               </div>
               <br>
-              <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;">E-mail :</h4>
-                <input type="email" placeholder="" [(ngModel)]="intern.email"
-                       [ngModelOptions]="{standalone : true}" style="width: 100%">
+              <div class="col-md-6 mb-3">
+                <label>E-mail :</label>
+                <input type="email" class="form-control" placeholder="" [(ngModel)]="intern.email"
+                  [ngModelOptions]="{standalone : true}" style="width: 100%">
               </div>
               <br>
-              <div class="row col-md-12" style="float:none;margin:auto;">
-                <h4 style="float:none;margin:auto;">Phone number :</h4>
-                <input type="number" placeholder="" [(ngModel)]="intern.num"
-                       [ngModelOptions]="{standalone : true}" style="width: 100%">
+              <div class="col-md-6 mb-3">
+                <label>Phone number :</label>
+                <input type="number" class="form-control" placeholder="" [(ngModel)]="intern.num"
+                  [ngModelOptions]="{standalone : true}" style="width: 100%">
               </div>
               <br>
               <br>
               <div style="margin: auto; width: max-content;">
-                <button [disabled]="!intern.CIN || !intern.firstName || !intern.lastName"class="btn btn-success" type="button" class="btn btn-success" (click)="addIntern(intern)" (click)="modal1.close('Save click')" style="width:100px">Add</button>
-                <button type="button" class="btn btn-info" (click)="modal1.close('Save click')" style="width:100px">Cancel</button>
+                <button [disabled]="!intern.CIN || !intern.firstName || !intern.lastName" class="btn btn-success"
+                  type="button" class="btn btn-success" (click)="addIntern(intern)" (click)="modal1.close('Save click')"
+                  style="width:100px; margin-right: 10px;">Add</button>
+                <button type="button" class="btn btn-info" (click)="modal1.close('Save click')"
+                  style="width:100px">Cancel</button>
               </div>
-            </form>
-          </div>
-        </ng-template>
-      </div>
-      <!-- Table -->
-      <div class="col">
-        <div class="card shadow">
-          <div class="card-header border-0">
-            <h3 class="mb-0"><b>Interns management</b></h3>
-          </div>
-          <div class="row col-md-12">
-            <div class="col-md-3" *ngFor="let intern of internsList">
-              <div class="card shadow p-3 mb-5 bg-white rounded" style="width: 18rem; margin-left: 30px; margin-top: 20px; display: inline-block;">
-                <img class="card-img-top" src="../../../assets/interns.png" alt="Card image cap" style="height:10px">
-                <div class="card-body">
-                  <h6 style="float: right"> {{ intern.school }}</h6>
+            </div>
+          </form>
+        </div>
+      </ng-template>
+    </div>
+    <!-- Table -->
+    <div class="col">
+      <div class="card shadow">
+        <div class="card-header border-0">
+          <label class="mb-0"><b>Interns management</b></label>
+        </div>
+        <div class="row col-md-12">
+          <div class="col-md-3" *ngFor="let intern of internsList">
+            <div class="card shadow p-3 mb-5 bg-white rounded"
+              style="width: 18rem; margin-left: 30px; margin-top: 20px; display: inline-block;">
+              <img class="card-img-top" src="../../../assets/interns.png" alt="Card image cap" style="height:5px">
+              <div class="card-body">
+                <label style="float: right"> {{ intern.school }}</label>
+                <br>
+                <br>
+                <label class="card-title" style="text-align: center; width: 100%;"><b>{{ intern.firstName }} {{
+                    intern.lastName }}</b></label>
+                <label class="card-text" style="text-align: center; width: 100%;"> {{ intern.email }}</label>
+                <label class="card-text" style="text-align: center; width: 100%;"> {{ intern.num }}</label>
+                <label *ngIf="intern.subject != null;" style="text-align: center; width: 100%;">▸ N° {{
+                  intern.subject.number }} - {{
+                  intern.subject.title }} ◂</label>
+                <label *ngIf="intern.subject == null" style="text-align: center; width: 100%;">▸ Not assigned ◂</label>
+                <label *ngIf="intern.subject != null" style="text-align: center; width: 100%;">▹ {{ intern.subject.field
+                  }} ◃</label>
+                <br>
+                <button type="button" class="btn btn-outline-success" (click)="open(mymodal2)"
+                  style="width: 100%; font-size: 10px;">
+                  Manage subjects
+                </button>
+                <ng-template #mymodal2 let-modal>
+                  <div class="modal-header">
+                    <label class="modal-title" id="modal-basic-title"><b>Assign a subject</b></label>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true" (click)="cancel()">×</span>
+                    </button>
+                  </div>
+                  <div>
+                    <form>
+                      <div class="modal-body">
+                        <div class="col-md-12 mb-3">
+                          <label> Subjects :</label>
+                          <select [(ngModel)]="intern.subject" [ngModelOptions]="{standalone : true}"
+                            class="form-control">
+                            <option [ngValue]="null" class="form-control">-- Choose a subject --</option>
+                            <option *ngFor="let subject of subjectsList" [value]="subject.idSubject"
+                              class="form-control">N° {{
+                              subject.bumber }} - {{subject.title}}</option>
+                          </select>
+                        </div>
+                      </div>
+                      <div class="modal-footer" style="margin: auto; width: max-content;">
+                        <button [disabled]="!intern.subject" class="btn btn-success"
+                          (click)="affectSubject(intern.idIntern, subject.idSubject)"
+                          (click)="modal.close('Save click')" style="width:100px">Confirm</button>
+                        <button type="button" class="btn btn-info" (click)="modal.close('Save click')"
+                          (click)="cancel()" style="width:100px">
+                          Cancel
+                        </button>
+                      </div>
+                    </form>
+                  </div>
                   <br>
-                  <br>
-                  <h3 class="card-title" style="text-align: center">{{ intern.firstName }} {{ intern.lastName }}</h3>
-                  <p class="card-text" style="text-align: center"> {{ intern.email }}</p>
-                  <p class="card-text" style="text-align: center"> {{ intern.num }}</p>
-                  <h5 *ngIf="intern.subject != null;" style="text-align: center">▸ N° {{ intern.subject.number }} - {{ intern.subject.title }} ◂</h5>
-                  <h5 *ngIf="intern.subject == null" style="text-align: center">▸ Not assigned ◂</h5>
-                  <h5 *ngIf="intern.subject != null" style="text-align: center">▹ {{ intern.subject.field }} ◃</h5>
-                  <br>
-                  <button type="button" class="btn btn-outline-success"
-                          (click)="open(mymodal2)" style="width: 100%; font-size: 10px;">
-                    Manage subjects
-                  </button>
-                  <ng-template #mymodal2 let-modal>
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="modal-basic-title"><b>Affect a subject to this intern</b></h4>
-                      <button type="button" class="close" aria-label="Close"
-                              (click)="modal.dismiss('Cross click')">
-                        <span aria-hidden="true" (click)="cancel()">×</span>
-                      </button>
-                    </div>
-                    <div>
-                      <form>
-                        <div class="modal-body">
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;"> Subjects list</h4>
-                            <select [(ngModel)]="intern.subject" [ngModelOptions]="{standalone : true}" style="width:100%;line-height: normal">
-                              <option [ngValue]="null" style="text-align-last: center;">-- Choose a subject --</option>
-                              <option *ngFor="let subject of subjectsList" [value]="subject.idSubject">N° {{ subject.bumber }} - {{subject.title}}</option>
-                            </select>
+                </ng-template>
+                <button type="button" class="btn btn-outline-primary" (click)="open(mymodal)"
+                  style="width: 47%; font-size: 10px;margin-top:2px; display: inline-block">
+                  Edit
+                </button>
+                <ng-template #mymodal let-modal>
+                  <div class="modal-header">
+                    <label class="modal-title" id="modal-basic-title"><b>Edit intern</b></label>
+                    <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+                      <span aria-hidden="true" (click)="cancel()">×</span>
+                    </button>
+                  </div>
+                  <div>
+                    <form>
+                      <div class="modal-body">
+                        <div class="form-row">
+                          <div class="col-md-4 mb-3">
+                            <label>CIN :</label>
+                            <input class="form-control" type="number" [(ngModel)]="intern.CIN"
+                              [ngModelOptions]="{standalone : true}" />
                           </div>
+                          <br>
+                          <div class="col-md-4 mb-3">
+                            <label>First name :</label>
+                            <input class="form-control" type="text" [(ngModel)]="intern.firstName"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-4 mb-3">
+                            <label>Last name :</label>
+                            <input class="form-control" type="text" [(ngModel)]="intern.lastName"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-12 mb-3">
+                            <label>School :</label>
+                            <input class="form-control" type="text" [(ngModel)]="intern.school"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-6 mb-3">
+                            <label>E-mail :</label>
+                            <input class="form-control" type="email" [(ngModel)]="intern.email"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+                          <div class="col-md-6 mb-3">
+                            <label>Phone number :</label>
+                            <input class="form-control" type="number" [(ngModel)]="intern.num"
+                              [ngModelOptions]="{standalone : true}" />
+                          </div>
+                          <br>
+
                         </div>
                         <div class="modal-footer" style="margin: auto; width: max-content;">
-                          <button [disabled]="!intern.subject" class="btn btn-success" (click)="affectSubject(intern.idIntern, subject.idSubject)" (click)="modal.close('Save click')" style="width:100px">Confirm</button>
-                          <button type="button" class="btn btn-info"
-                                  (click)="modal.close('Save click')" (click)="cancel()" style="width:100px">
+                          <button [disabled]="!intern.CIN || !intern.firstName || !intern.lastName "
+                            class="btn btn-success" (click)="editIntern(intern.idIntern,intern)"
+                            (click)="modal.close('Save click')" style="width:100px">Confirm</button>
+                          <button type="button" class="btn btn-info" (click)="modal.close('Save click')"
+                            (click)="cancel()" style="width:100px">
                             Cancel
                           </button>
                         </div>
-                      </form>
-                    </div>
-                    <br>
-                  </ng-template>
-                  <button type="button" class="btn btn-outline-primary"
-                          (click)="open(mymodal)" style="width: 47%; font-size: 10px;margin-top:2px; display: inline-block">
-                    Edit
-                  </button>
-                  <ng-template #mymodal let-modal>
-                    <div class="modal-header">
-                      <h4 class="modal-title" id="modal-basic-title"><b>Edit intern</b></h4>
-                      <button type="button" class="close" aria-label="Close"
-                              (click)="modal.dismiss('Cross click')">
-                        <span aria-hidden="true" (click)="cancel()">×</span>
-                      </button>
-                    </div>
-                    <div>
-                      <form>
-                        <div class="modal-body">
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;">(*) CIN :</h4>
-                            <input type="number" [(ngModel)]="intern.CIN" [ngModelOptions]="{standalone : true}" style="width: 100%" />
-                          </div>
-                          <br>
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;">(*) First name :</h4>
-                            <input type="text" [(ngModel)]="intern.firstName" [ngModelOptions]="{standalone : true}" style="width: 100%" />
-                          </div>
-                          <br>
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;">(*) Last name :</h4>
-                            <input type="text" [(ngModel)]="intern.lastName" [ngModelOptions]="{standalone : true}" style="width: 100%" />
-                          </div>
-                          <br>
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;">School :</h4>
-                            <input type="text" [(ngModel)]="intern.school" [ngModelOptions]="{standalone : true}" style="width: 100%"/>
-                          </div>
-                          <br>
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;">E-mail :</h4>
-                            <input type="email" [(ngModel)]="intern.email" [ngModelOptions]="{standalone : true}" style="width: 100%"/>
-                          </div>
-                          <br>
-                          <div class="row col-md-12">
-                            <h4 style="float:none;margin:auto;">Phone number :</h4>
-                            <input type="number" [(ngModel)]="intern.num" [ngModelOptions]="{standalone : true}" style="width: 100%"/>
-                          </div>
-                          <br>
-  
-                        </div>
-  
-                        <div class="modal-footer" style="margin: auto; width: max-content;">
-                          <button [disabled]="!intern.CIN || !intern.firstName || !intern.lastName " class="btn btn-success" (click)="editIntern(intern.idIntern,intern)" (click)="modal.close('Save click')" style="width:100px">Confirm</button>
-                          <button type="button" class="btn btn-info"
-                                  (click)="modal.close('Save click')" (click)="cancel()" style="width:100px">
-                            Cancel
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                    <br>
-                  </ng-template>
-                  <button type="button" class="btn btn-outline-danger"
-                          (click)="confirmDelete(intern.idIntern,intern.firstName)" style="width: 47%; font-size:10px; margin-top:2px;display: inline-block; float: right;">
-                    Delete
-                  </button>
-                </div>
+                      </div>
+                    </form>
+                  </div>
+                  <br>
+                </ng-template>
+                <button type="button" class="btn btn-outline-danger"
+                  (click)="confirmDelete(intern.idIntern,intern.firstName)"
+                  style="width: 47%; font-size:10px; margin-top:2px;display: inline-block; float: right;">
+                  Delete
+                </button>
               </div>
             </div>
           </div>
-          <br>
-  
         </div>
+        <br>
+
       </div>
     </div>
   </div>
-    <style>
-      ::ng-deep ngb-modal-backdrop {
-        z-index: 100 !important;
-      }
-    </style>
+</div>
+<style>
+  ::ng-deep ngb-modal-backdrop {
+    z-index: 100 !important;
+  }
+</style>
