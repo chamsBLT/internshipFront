@@ -69,6 +69,10 @@ export class InternComponent implements OnInit {
     this.is.affectSubject(idi, ids).subscribe(() => this.getAllInterns());
   }
 
+  unaffectSubject(idi: any) {
+    this.is.unaffectSubject(idi).subscribe(() => this.getAllInterns());
+  }
+
 
 
   open(content: any) {

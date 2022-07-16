@@ -118,27 +118,30 @@
                     <form>
                       <div class="modal-body">
                         <div class="form-row">
-                        <div class="col-md-12 mb-3">
-                          <label> Subjects :</label>
-                          <select [(ngModel)]="intern.subject.idSubject" [ngModelOptions]="{standalone : true}"
-                            class="form-control">
-                            <option [ngValue]="null" class="form-control">-- Choose a subject --</option>
-                            <option *ngFor="let subject of subjectsList" [value]="subject.idSubject"
-                              class="form-control">N° {{
-                              subject.number }} - {{subject.title}}</option>
-                          </select>
+                          <div class="col-md-12 mb-3">
+                            <label> Subjects :</label>
+                            <select [(ngModel)]="intern.subject" [ngModelOptions]="{standalone : true}"
+                              class="form-control">
+                              <option [ngValue]="null" class="form-control">-- Choose a subject --</option>
+                              <option *ngFor="let subject of subjectsList" [value]="subject.idSubject"
+                                class="form-control">N° {{
+                                subject.number }} - {{subject.title}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="modal-footer" style="margin: auto; width: max-content;">
+                          <button [disabled]="!intern.subject" class="btn btn-success"
+                            (click)="affectSubject(intern.idIntern, intern.subject)" (click)="modal.close('Save click')"
+                            style="width:100px">Confirm</button>
+                          <button [disabled]="!intern.subject" class="btn btn-danger"
+                            (click)="unaffectSubject(intern.idIntern)" (click)="modal.close('Save click')"
+                            style="width:100px">Remove</button>
+                          <button type="button" class="btn btn-info" (click)="modal.close('Save click')"
+                            (click)="cancel()" style="width:100px">
+                            Cancel
+                          </button>
                         </div>
                       </div>
-                      <div class="modal-footer" style="margin: auto; width: max-content;">
-                        <button [disabled]="!intern.subject" class="btn btn-success"
-                          (click)="affectSubject(intern.idIntern, subject.idSubject)"
-                          (click)="modal.close('Save click')" style="width:100px">Confirm</button>
-                        <button type="button" class="btn btn-info" (click)="modal.close('Save click')"
-                          (click)="cancel()" style="width:100px">
-                          Cancel
-                        </button>
-                      </div>
-                    </div>
                     </form>
                   </div>
                   <br>

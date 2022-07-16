@@ -25,4 +25,7 @@ export class InternService {
   affectSubject(idi: any,ids: any) {
     return this.httpClient.put(`${this.API_URL}/affectSubject/${idi}/${ids}`, null);
   }
+  unaffectSubject(idi: any) {
+    return this.httpClient.put(`${this.API_URL}/unaffectSubject/${idi}`, null);
+  }
 }
