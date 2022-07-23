@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class InternService {
 
-  readonly API_URL = 'http://localhost:8082/internship-app/interns';
+  readonly API_URL = 'http://internship-back-svc:8082/internship-app/interns';
 
   constructor(private httpClient: HttpClient) { }
 
