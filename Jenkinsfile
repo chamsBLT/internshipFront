@@ -2,7 +2,8 @@ node ('slave1') {
     def app
     
     stage('Clone repository') {
-        checkout scm
+       
+      checkout scm
     }
     
     stage('Build project') {
@@ -10,11 +11,13 @@ node ('slave1') {
     }
     
     stage('Build image') {
+      
       echo "Done"
     }
 
     stage('Push image') {
-        echo "Done"       
+        
+      echo "Done"       
     }  
       
     stage('Delpoying the App on Azure Kubernetes Service') {            
