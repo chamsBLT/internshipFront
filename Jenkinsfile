@@ -5,20 +5,6 @@ node ('slave1') {
        
       checkout scm
     }
-    
-    stage('Build project') {
-        echo "Done"
-    }
-    
-    stage('Build image') {
-      
-      echo "Done"
-    }
-
-    stage('Push image') {
-        
-      echo "Done"       
-    }  
       
     stage('Delpoying the App on Azure Kubernetes Service') {            
         app = docker.image('chxws/internshipfront:latest')            
