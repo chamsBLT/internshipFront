@@ -10,13 +10,11 @@ node ('slave1') {
     }
     
     stage('Build image') {
-        app = docker.build("chxws/internshipfront")
+      echo "Done"
     }
 
     stage('Push image') {
-        docker.withRegistry('', 'docker-credentials') {
-            app.push("latest")
-        }
+        echo "Done"       
     }  
       
     stage('Delpoying the App on Azure Kubernetes Service') {            
