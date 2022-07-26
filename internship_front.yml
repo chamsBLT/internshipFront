@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: internship-front
-          image: chxws/internshipfront:latest
+          image: chxws/testcnt:latest
           ports:
             - containerPort: 80
 ---
