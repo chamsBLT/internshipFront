@@ -7,7 +7,7 @@ node ('slave1') {
     }
       
     stage('Delpoying the App on Azure Kubernetes Service') {            
-        app = docker.image('chxws/testcontainer:latest')            
+        app = docker.image('chxws/testcont:latest')            
         docker.withRegistry('', 'docker-credentials') {            
             app.pull()            
 
