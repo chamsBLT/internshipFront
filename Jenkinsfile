@@ -2,12 +2,26 @@ node ('slave1') {
     def app
     
     stage('Clone repository') {
-       
-      checkout scm
+        checkout scm
     }
+    
+    stage('Build project') {
+        sh "ng build --prod"
+        sh "./mvnw package"
+    }
+    
+    stage('Build image') {
+        app = docker.build("chxws/internship-app-front")
+    }
+
+    stage('Push image') {
+        docker.withRegistry('', 'docker-credentials') {
+            app.push("latest")
+        }
+    }  
       
-    stage('Delpoying the App on Azure Kubernetes Service') {            
-        app = docker.image('chxws/testcntt:latest')            
+    stage('Delpoying the App on AKS') {            
+        app = docker.image('chxws/internship-app-front:latest')            
         docker.withRegistry('', 'docker-credentials') {            
             app.pull()            
 
