@@ -7,7 +7,6 @@ node ('slave1') {
     
     stage('Build project') {
         sh "ng build --prod"
-        sh "./mvnw package"
     }
     
     stage('Build image') {
