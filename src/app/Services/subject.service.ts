@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class SubjectService {
 
-  readonly API_URL = 'http://internship-back-svc:8082/internship-app/subjects';
+  readonly API_URL = 'http://20.121.231.61/internship-app/subjects';
 
   constructor(private httpClient: HttpClient) { }
 
