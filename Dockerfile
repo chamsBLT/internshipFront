@@ -5,9 +5,11 @@ WORKDIR /app/
 
 COPY ./ /app/
 
+RUN npm config set registry http://registry.npmjs.org/
+
 RUN npm install --verbose
 
-RUN npm run build
+RUN npm run build --prod
 
 
 #Stage 2
