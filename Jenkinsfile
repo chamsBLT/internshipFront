@@ -3,11 +3,7 @@ node ('slave1') {
     
     stage('Clone repository') {
         checkout scm
-    }
-    
-    stage('Build project') {
-        sh "ng build --prod"
-    }
+    } 
     
     stage('Build image') {
         app = docker.build("chxws/internship-app-front")
